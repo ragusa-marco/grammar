@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 16px;
+      margin: 6px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+    .option { background: #06d6a0; color: white; }
+    .next { background: #118ab2; color: white; width: 100%; }
+    .sentence { font-size: 20px; margin-bottom: 16px; }
+    .feedback { margin-top: 12px; font-weight: bold; }
+    .disabled { pointer-events: none; opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <h1>Grammar Playground ✏️</h1>
+  <p style="text-align:center">Choose the <strong>subjective complement</strong> from the options below.</p>
+
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:10px;">
+      <div>⏱ Time: <span id="time">60</span>s</div>
+      <div>⭐ Score: <span id="score">0</span></div>
+    </div>
+    <div class="sentence" id="sentence">Loading sentence...</div>
+    <div id="buttons"></div>
+    <div class="feedback" id="feedback"></div>
+    <button class="next disabled" id="nextButton" onclick="nextSentence()">Next Sentence ➡️</button>
+  </div>
+
+  <script>
+    const sentences = [
+      { text: "The hungry travelers from the city became extremely tired after the long hike.", answer: "tired" },
+      
+      { text: "The old wooden bridge over the river is quite dangerous for heavy trucks.", answer: "dangerous" },
+      
+      { text: "The new student in our class seems very friendly to everyone in the hall.", answer: "friendly" },
+      
+      { text: "The winners of the science fair this year were they in the blue shirts.", answer: "they" },
+      
+      { text: "That old scratchy sweater feels very itchy this morning on my skin.", answer: "itchy" },
+      
+      { text: "The little girl with the lost kitten felt quite sad during the rain storm.", answer: "sad" },
+      
+      { text: "After many years of study, my sister became a famous doctor in the city.", answer: "doctor" },
+      
+      { text: "The mystery book on the table seems very interesting to my older brother.", answer: "interesting" },
+      
+      { text: "The brave young boy became a local hero after saving the puppy.", answer: "hero" },
+      
+      { text: "The icy water in the mountain stream was very cold against my bare feet.", answer: "cold" },
+      
+      { text: "The tall green grass in the open field became very long during June.", answer: "long" },
+      
+      { text: "The bright stars above the quiet desert were quite beautiful to watch.", answer: "beautiful" },
+      
+      { text: "My favorite snack after a long day at school is buttery popcorn.", answer: "popcorn" },
+      
+      { text: "The giant crumbling castle on the hill was once a mighty fortress.", answer: "fortress" },
+      
+      { text: "The person calling your name from the dark hallway is surely I.", answer: "I" },
+      
+      { text: "Those bright yellow sunflowers in the garden are remarkably tall this year.", answer: "tall" },
+      
+      { text: "The captain of the soccer team during the playoffs is he.", answer: "he" },
+      
+      { text: "That loud crashing sound in the middle of the night was loud thunder.", answer: "thunder" },
+      
+      { text: "The soft purple blanket on my twin bed is finally mine.", answer: "mine" },
+      
+      { text: "Those brave firefighters in the big red truck are true heroes.", answer: "heroes" },
+      
+      { text: "The driver of the yellow school bus is usually he.", answer: "he" },
+      
+      { text: "The spooky dark basement under the old house was incredibly scary.", answer: "scary" },
+      
+      { text: "The red tractor in the muddy field is absolutely huge.", answer: "huge" },
+      
+      { text: "Our new neighbor from across the busy street is a talented baker.", answer: "baker" },
+      
+      { text: "The cold wind during the winter storm felt very sharp against my face.", answer: "sharp" },
+      
+      { text: "The smartest students in the robotics club are definitely they.", answer: "they" },
+      
+      { text: "The sweet smell of the baking chocolate cookies was truly wonderful.", answer: "wonderful" },
+      
+      { text: "A bright green lizard on the garden wall was perfectly still.", answer: "still" },
+      
+      { text: "The best artist in the whole fourth grade is clearly she.", answer: "she" },
+      
+      { text: "The rusty old gate at the edge of the park is broken.", answer: "broken" },
+      
+      { text: "The large gray elephant at the city zoo was extremely hungry.", answer: "hungry" },
+      
+      { text: "The main character in my favorite story is a friendly giant.", answer: "giant" },
+      
+      { text: "The sky during the summer sunset looked bright purple.", answer: "purple" },
+      
+      { text: "The people waiting in the long line were actually we.", answer: "we" },
+      
+      { text: "The sour pickles in the glass jar were very crunchy.", answer: "crunchy" },
+      
+      { text: "My older brother in the marching band is a loud drummer.", answer: "drummer" },
+      
+      { text: "The shiny new bike in the garage is finally mine.", answer: "mine" },
+      
+      { text: "The quietest child in the large library was certainly he.", answer: "he" },
+      
+      { text: "The ripe bananas on the kitchen table are quite brown.", answer: "brown" },
+      
+      { text: "The soft fur on the white rabbit was very silky.", answer: "silky" },
+      
+      { text: "The primary color in that beautiful painting is bright blue.", answer: "blue" },
+      
+      { text: "The tall skinny tree near the back fence is a pine.", answer: "pine" },
+      
+      { text: "The winner of the drawing contest was definitely she.", answer: "she" },
+      
+      { text: "The salty popcorn at the movie theater was extra buttery.", answer: "buttery" },
+      
+      { text: "Our family doctor at the local clinic is a surgeon.", answer: "surgeon" },
+      
+      { text: "The noisy engine in the old truck was incredibly loud.", answer: "loud" },
+      
+      { text: "The brave explorers in the deep cave were secretly they.", answer: "they" },
+      
+      { text: "The spicy salsa in the stone bowl was very hot.", answer: "hot" },
+      
+      { text: "The lady with the fancy umbrella is our principal.", answer: "principal" },
+      
+      { text: "The clear water in the stone birdbath was frozen.", answer: "frozen" },
+      
+      { text: "The person who fixed the broken bike was he.", answer: "he" },
+      
+      { text: "The orange pumpkin on the front porch is very heavy.", answer: "heavy" },
+      
+      { text: "My favorite sport to play in the spring is baseball.", answer: "baseball" },
+      
+      { text: "The bright lamp on the wooden desk was very bright.", answer: "bright" },
+      
+      { text: "The king of the jungle in the cartoon was a lion.", answer: "lion" },
+      
+      { text: "The loose tooth in my mouth is very wiggly.", answer: "wiggly" },
+      
+      { text: "The student with the highest test score was surely she.", answer: "she" },
+      
+      { text: "The heavy rain on the tin roof was quite noisy.", answer: "noisy" },
+      
+      { text: "The chef in the busy restaurant is a real genius.", answer: "genius" },
+      
+      { text: "The silver moon above the dark trees was perfectly full.", answer: "full" },
+      
+      { text: "The person who finished the puzzle first was I.", answer: "I" },
+      
+      { text: "The colorful parrot in the wire cage was very chatty.", answer: "chatty" },
+      
+      { text: "The dark chocolate in the gold wrapper was quite bitter.", answer: "bitter" },
+      
+      { text: "The man in the blue uniform is a pilot.", answer: "pilot" },
+      
+      { text: "The empty box in the recycling bin was very light.", answer: "light" },
+      
+      { text: "The kids playing on the swings were actually we.", answer: "we" },
+      
+      { text: "The black cat on the wooden fence was very grumpy.", answer: "grumpy" },
+      
+      { text: "The leader of the scout troop is a brave soldier.", answer: "soldier" },
+      
+      { text: "The hot sand at the sunny beach was pure white.", answer: "white" },
+      
+      { text: "The owner of the red car is definitely she.", answer: "she" },
+      
+      { text: "The yellow butter on the toasted bread was very melty.", answer: "melty" },
+      
+      { text: "The girl in the yellow dress is a dancer.", answer: "dancer" },
+      
+      { text: "The fast computer on the computer desk was quite expensive.", answer: "expensive" },
+      
+      { text: "The ones who forgot their lunch were unfortunately they.", answer: "they" },
+      
+      { text: "The small bird in the nest was a tiny robin.", answer: "robin" },
+      
+      { text: "The juice in the plastic bottle was very sweet.", answer: "sweet" },
+      
+      { text: "The heavy gate at the castle entrance was solid iron.", answer: "iron" },
+      
+      { text: "The person who brought the cookies was he.", answer: "he" },
+      
+      { text: "The sharp pencils in the pencil box are bright yellow.", answer: "yellow" },
+      
+      { text: "The primary ingredient in the birthday cake is flour.", answer: "flour" },
+      
+      { text: "The pretty shells on the sand were very shiny.", answer: "shiny" },
+      
+      { text: "The big clock in the hallway was very slow.", answer: "slow" },
+      
+      { text: "The principal of our elementary school is a kind woman.", answer: "woman" },
+      
+      { text: "The warm soup in the ceramic bowl was very tasty.", answer: "tasty" },
+      
+      { text: "The only person left in the room was she.", answer: "she" },
+      
+      { text: "The green frog on the lily pad was very huge.", answer: "huge" },
+      
+      { text: "The blue whales in the deep ocean are enormous.", answer: "enormous" },
+      
+      { text: "The man who mows the lawn is usually he.", answer: "he" },
+      
+      { text: "The golden sun behind the gray clouds was very bright.", answer: "bright" },
+      
+      { text: "The most important rule in the class is kindness.", answer: "kindness" },
+      
+      { text: "The long train on the metal tracks was very fast.", answer: "fast" },
+      
+      { text: "The ones who won the gold medal were they.", answer: "they" },
+      
+      { text: "The fresh apples from the farm were very crisp.", answer: "crisp" },
+      
+      { text: "The lady in the red coat is my favorite aunt.", answer: "aunt" },
+      
+      { text: "The old map in the wooden chest was badly torn.", answer: "torn" },
+      
+      { text: "The person responsible for the mess was definitely I.", answer: "I" },
+      
+      { text: "The light snow on the cold ground was very pretty.", answer: "pretty" },
+      
+      { text: "The smartest animal on the farm is a pig.", answer: "pig" },
+      
+      { text: "The heavy sled on the steep hill was very fast.", answer: "fast" },
+      
+      { text: "The singer with the beautiful voice was definitely she.", answer: "she" },
+      
+      { text: "The loud drums in the music room were very annoying.", answer: "annoying" },
+      
+      { text: "The center of our solar system is the sun.", answer: "sun" },
+      
+      { text: "The purple grapes on the long vine were perfectly ripe.", answer: "ripe" },
+      
+      { text: "The person who answered the phone was he.", answer: "he" },
+      
+      { text: "The tiny seeds in the garden soil were very small.", answer: "small" },
+      
+      { text: "The best fruit for a summer picnic is watermelon.", answer: "watermelon" },
+      
+      { text: "The tall buildings in the big city were dark gray.", answer: "gray" },
+      
+      { text: "The person at the very front of the line was she.", answer: "she" },
+      
+      { text: "The white paper on the messy desk was completely blank.", answer: "blank" },
+      
+      { text: "The author of the adventure book is a tall man.", answer: "man" },
+      
+      { text: "The fuzzy blankets in the linen closet were very soft.", answer: "soft" },
+      
+      { text: "The travelers from the distant land were we.", answer: "we" },
+      
+      { text: "The cold milk in the glass carton was very fresh.", answer: "fresh" },
+      
+      { text: "The captain of the pirate ship was surely he.", answer: "he" },
+      
+      { text: "The red berries on the green bush were poisonous.", answer: "poisonous" },
+      
+      { text: "The main reason for the school party is a birthday.", answer: "birthday" },
+      
+      { text: "The busy bees in the flower garden were very active.", answer: "active" },
+      
+      { text: "The coach of the baseball team is definitely she.", answer: "she" },
+      
+      { text: "The large rocks in the shallow stream were very slippery.", answer: "slippery" },
+      
+      { text: "The smartest boy in the chess club is he.", answer: "he" },
+      
+      { text: "The blue ink in the fountain pen was very messy.", answer: "messy" },
+      
+      { text: "The owner of the local bakery is my uncle.", answer: "uncle" },
+      
+      { text: "The dark shadows on the bedroom wall were very scary.", answer: "scary" },
+      
+      { text: "The person who made the final goal was she.", answer: "she" },
+      
+      { text: "The gold coins in the black bag were very heavy.", answer: "heavy" },
+      
+      { text: "The capital city of our country is quite huge.", answer: "huge" },
+      
+      { text: "The yellow plane in the blue sky was very tiny.", answer: "tiny" },
+      
+      { text: "The winners of the talent show were definitely they.", answer: "they" },
+      
+      { text: "The white eggs in the straw nest were very fragile.", answer: "fragile" },
+      
+      { text: "The lady who bakes the best pies is she.", answer: "she" },
+      
+      { text: "The wooden chair in the dining room was very hard.", answer: "hard" },
+      
+      { text: "The main ingredient in this soup is a yellow onion.", answer: "onion" },
+      
+      { text: "The small kitten on the soft rug was very playful.", answer: "playful" },
+      
+      { text: "The person who broke the window was surely he.", answer: "he" },
+      
+      { text: "The cold ice in the cooler was completely frozen.", answer: "frozen" },
+      
+      { text: "The goal of our soccer team is victory.", answer: "victory" },
+      
+      { text: "The green leaves on the maple tree were very large.", answer: "large" },
+      
+      { text: "The driver of the long freight train is he.", answer: "he" },
+      
+      { text: "The orange juice in the glass pitcher was very cold.", answer: "cold" },
+      
+      { text: "The most famous player on the team is she.", answer: "she" },
+      
+      { text: "The little girl in the pink boots was very happy.", answer: "happy" },
+      
+      { text: "The person who wrote the funny poem was I.", answer: "I" },
+      
+      { text: "The large pizza with the extra cheese was very hot.", answer: "hot" },
+      
+      { text: "The best place for a quiet nap is my bed.", answer: "bed" },
+      
+      { text: "The thick book on the wooden table was very long.", answer: "long" },
+      
+      { text: "The leader of the group of students was she.", answer: "she" },
+      
+      { text: "The white snow on the mountain peak was very bright.", answer: "bright" },
+      
+      { text: "The smartest person in the entire world is he.", answer: "he" },
+      
+      { text: "The old man on the park bench was very kind.", answer: "kind" },
+      
+      { text: "The prize for the drawing contest is a gold trophy.", answer: "trophy" },
+      
+      { text: "The blue birds in the stone bath were very wet.", answer: "wet" },
+      
+      { text: "The one who finished the race first was she.", answer: "she" },
+      
+      { text: "The pink frosting on the chocolate cake was very sweet.", answer: "sweet" },
+      
+      { text: "The name of the new school puppy is Max.", answer: "Max" },
+      
+      { text: "The heavy box in the dark attic was very dusty.", answer: "dusty" },
+      
+      { text: "The ones who stayed after school were we.", answer: "we" },
+      
+      { text: "The small boat on the lake was bright blue.", answer: "blue" },
+      
+      { text: "The star of the new movie is she.", answer: "she" },
+      
+      { text: "The yellow flowers in the glass vase were very pretty.", answer: "pretty" },
+      
+      { text: "The boy who found the lost keys was he.", answer: "he" },
+      
+      { text: "The fast horse in the green pasture was dark brown.", answer: "brown" },
+      
+      { text: "The winner of the gold medal was surely she.", answer: "she" },
+      
+      { text: "The fresh bread in the warm oven was light brown.", answer: "brown" },
+      
+      { text: "The best singer in the choir is he.", answer: "he" },
+      
+      { text: "The black dog in the backyard was very loud.", answer: "loud" },
+      
+      { text: "The teacher for our math class is she.", answer: "she" },
+      
+      { text: "The clear sky over the tall mountains was light blue.", answer: "blue" },
+      
+      { text: "The driver of the police car is he.", answer: "he" },
+      
+      { text: "The round ball on the playground was bright red.", answer: "red" },
+      
+      { text: "The person in the middle of the photo is I.", answer: "I" },
+      
+      { text: "The green grass in the front yard was very wet.", answer: "wet" },
+      
+      { text: "The best month for a long vacation is July.", answer: "July" },
+      
+      { text: "The hot tea in the blue cup was very bitter.", answer: "bitter" },
+      
+      { text: "The person who fixed the computer was she.", answer: "she" },
+      
+      { text: "The new shoes in the cardboard box were pure white.", answer: "white" },
+      
+      { text: "The smartest girl in the class is she.", answer: "she" },
+      
+      { text: "The small cat on the windowsill was light gray.", answer: "gray" },
+      
+      { text: "The owner of the orange cat is he.", answer: "he" },
+      
+      { text: "The yellow sun in the sky was extremely bright.", answer: "bright" },
+      
+      { text: "The name of the town is Springville.", answer: "Springville" },
+      
+      { text: "The old house on the corner was completely empty.", answer: "empty" },
+      
+      { text: "The woman who gave the speech was she.", answer: "she" },
+      
+      { text: "The red apple on the teacher's desk was very shiny.", answer: "shiny" },
+      
+      { text: "The captain of the giant ship is he.", answer: "he" },
+      
+      { text: "The green trees in the park were very tall.", answer: "tall" },
+      
+      { text: "The girl who won the contest was definitely she.", answer: "she" },
+      
+      { text: "The bright lamp in the living room was brand new.", answer: "new" },
+      
+      { text: "The author of the children's book is she.", answer: "she" },
+      
+      { text: "The white clouds in the sky were very fluffy.", answer: "fluffy" },
+      
+      { text: "The ones who finished their work were they.", answer: "they" },
+      
+      { text: "The spicy food at the restaurant was very hot.", answer: "hot" },
+      
+      { text: "The winner of the spelling bee was he.", answer: "he" },
+      
+      { text: "The soft pillow on my bed was light blue.", answer: "blue" },
+      
+      { text: "The person who made the cake was she.", answer: "she" },
+      
+      { text: "The big truck on the highway was very loud.", answer: "loud" },
+      
+      { text: "The name of the baby is Leo.", answer: "Leo" }
+    ];
+
+    let index = 0, timeLeft = 60, correctCount = 0, wrongCount = 0, timer = null;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function getOptions(answer, sentence) {
+      const words = sentence.split(/\s+/).filter(w => w.length > 2).map(w => w.replace(/[.,]/g,''));
+      let options = [answer];
+      while (options.length < 3 && words.length > 0) {
+        const randomWord = words.splice(Math.floor(Math.random() * words.length), 1)[0];
+        if (!options.includes(randomWord)) options.push(randomWord);
+      }
+      return shuffle(options);
+    }
+
+    function startGame() {
+      shuffle(sentences);
+      index = 0;
+      timeLeft = 60;
+      correctCount = 0;
+      wrongCount = 0;
+      document.getElementById("score").textContent = 0;
+      document.getElementById("nextButton").textContent = "Next Sentence ➡️";
+      document.getElementById("nextButton").classList.add('disabled');
+      document.getElementById("time").textContent = timeLeft;
+      showSentence();
+      startTimer();
+    }
+
+    function startTimer() {
+      if (timer !== null) return;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time").textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timer = null;
+          endGame();
+        }
+      }, 1000);
+    }
+
+    function showSentence() {
+      if (timeLeft <= 0) return;
+      const s = sentences[index];
+      document.getElementById("sentence").textContent = s.text;
+      document.getElementById("feedback").textContent = "";
+
+      const options = getOptions(s.answer, s.text);
+      document.getElementById("buttons").innerHTML = options.map(opt => `<button class='option' onclick="check('${opt}', this)">${opt}</button>`).join(' ');
+
+      document.getElementById("nextButton").classList.add('disabled');
+    }
+
+    function check(choice, btn) {
+      if (timeLeft <= 0) return;
+      const correct = sentences[index].answer;
+      const feedback = document.getElementById("feedback");
+      const buttons = document.getElementById("buttons");
+
+      Array.from(buttons.children).forEach(b => b.classList.add('disabled'));
+
+      if (choice === correct) {
+        correctCount++;
+        feedback.textContent = "✅ Correct!";
+      } else {
+        wrongCount++;
+        feedback.textContent = `❌ Not quite. The correct complement is '${correct}'.`;
+      }
+      document.getElementById("score").textContent = correctCount - wrongCount;
+
+      document.getElementById("nextButton").classList.remove('disabled');
+    }
+
+    function nextSentence() {
+      if (timeLeft <= 0) {
+        startGame();
+        return;
+      }
+      index = (index + 1) % sentences.length;
+      showSentence();
+    }
+
+    function endGame() {
+      document.getElementById("sentence").textContent = "⏰ Time's up!";
+      document.getElementById("buttons").innerHTML = "";
+      document.getElementById("feedback").textContent = `Final score: ${correctCount - wrongCount} (Correct: ${correctCount}, Wrong: ${wrongCount})`;
+      document.getElementById("nextButton").textContent = "Start New Game 🔄";
+      document.getElementById("nextButton").classList.remove('disabled');
+    }
+
+    startGame();
+
+    document.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' && timeLeft > 0 && !document.getElementById("nextButton").classList.contains('disabled')) {
+        e.preventDefault();
+        nextSentence();
+      }
+    });
+  </script>
+</body>
+</html>
