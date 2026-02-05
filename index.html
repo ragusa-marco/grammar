@@ -53,396 +53,209 @@
 
   <script>
     const sentences = [
-      { text: "The hungry travelers from the city became extremely tired after the long hike.", answer: "tired" },
-      
-      { text: "The old wooden bridge over the river is quite dangerous for heavy trucks.", answer: "dangerous" },
-      
-      { text: "The new student in our class seems very friendly to everyone in the hall.", answer: "friendly" },
-      
-      { text: "The winners of the science fair this year were they in the blue shirts.", answer: "they" },
-      
-      { text: "That old scratchy sweater feels very itchy this morning on my skin.", answer: "itchy" },
-      
-      { text: "The little girl with the lost kitten felt quite sad during the rain storm.", answer: "sad" },
-      
-      { text: "After many years of study, my sister became a famous doctor in the city.", answer: "doctor" },
-      
-      { text: "The mystery book on the table seems very interesting to my older brother.", answer: "interesting" },
-      
-      { text: "The brave young boy became a local hero after saving the puppy.", answer: "hero" },
-      
-      { text: "The icy water in the mountain stream was very cold against my bare feet.", answer: "cold" },
-      
-      { text: "The tall green grass in the open field became very long during June.", answer: "long" },
-      
-      { text: "The bright stars above the quiet desert were quite beautiful to watch.", answer: "beautiful" },
-      
-      { text: "My favorite snack after a long day at school is buttery popcorn.", answer: "popcorn" },
-      
-      { text: "The giant crumbling castle on the hill was once a mighty fortress.", answer: "fortress" },
-      
-      { text: "The person calling your name from the dark hallway is surely I.", answer: "I" },
-      
-      { text: "Those bright yellow sunflowers in the garden are remarkably tall this year.", answer: "tall" },
-      
-      { text: "The captain of the soccer team during the playoffs is he.", answer: "he" },
-      
-      { text: "That loud crashing sound in the middle of the night was loud thunder.", answer: "thunder" },
-      
-      { text: "The soft purple blanket on my twin bed is finally mine.", answer: "mine" },
-      
-      { text: "Those brave firefighters in the big red truck are true heroes.", answer: "heroes" },
-      
-      { text: "The driver of the yellow school bus is usually he.", answer: "he" },
-      
-      { text: "The spooky dark basement under the old house was incredibly scary.", answer: "scary" },
-      
-      { text: "The red tractor in the muddy field is absolutely huge.", answer: "huge" },
-      
-      { text: "Our new neighbor from across the busy street is a talented baker.", answer: "baker" },
-      
-      { text: "The cold wind during the winter storm felt very sharp against my face.", answer: "sharp" },
-      
-      { text: "The smartest students in the robotics club are definitely they.", answer: "they" },
-      
-      { text: "The sweet smell of the baking chocolate cookies was truly wonderful.", answer: "wonderful" },
-      
-      { text: "A bright green lizard on the garden wall was perfectly still.", answer: "still" },
-      
-      { text: "The best artist in the whole fourth grade is clearly she.", answer: "she" },
-      
-      { text: "The rusty old gate at the edge of the park is broken.", answer: "broken" },
-      
-      { text: "The large gray elephant at the city zoo was extremely hungry.", answer: "hungry" },
-      
-      { text: "The main character in my favorite story is a friendly giant.", answer: "giant" },
-      
-      { text: "The sky during the summer sunset looked bright purple.", answer: "purple" },
-      
-      { text: "The people waiting in the long line were actually we.", answer: "we" },
-      
-      { text: "The sour pickles in the glass jar were very crunchy.", answer: "crunchy" },
-      
-      { text: "My older brother in the marching band is a loud drummer.", answer: "drummer" },
-      
-      { text: "The shiny new bike in the garage is finally mine.", answer: "mine" },
-      
-      { text: "The quietest child in the large library was certainly he.", answer: "he" },
-      
-      { text: "The ripe bananas on the kitchen table are quite brown.", answer: "brown" },
-      
-      { text: "The soft fur on the white rabbit was very silky.", answer: "silky" },
-      
-      { text: "The primary color in that beautiful painting is bright blue.", answer: "blue" },
-      
-      { text: "The tall skinny tree near the back fence is a pine.", answer: "pine" },
-      
-      { text: "The winner of the drawing contest was definitely she.", answer: "she" },
-      
-      { text: "The salty popcorn at the movie theater was extra buttery.", answer: "buttery" },
-      
-      { text: "Our family doctor at the local clinic is a surgeon.", answer: "surgeon" },
-      
-      { text: "The noisy engine in the old truck was incredibly loud.", answer: "loud" },
-      
-      { text: "The brave explorers in the deep cave were secretly they.", answer: "they" },
-      
-      { text: "The spicy salsa in the stone bowl was very hot.", answer: "hot" },
-      
-      { text: "The lady with the fancy umbrella is our principal.", answer: "principal" },
-      
-      { text: "The clear water in the stone birdbath was frozen.", answer: "frozen" },
-      
-      { text: "The person who fixed the broken bike was he.", answer: "he" },
-      
-      { text: "The orange pumpkin on the front porch is very heavy.", answer: "heavy" },
-      
-      { text: "My favorite sport to play in the spring is baseball.", answer: "baseball" },
-      
-      { text: "The bright lamp on the wooden desk was very bright.", answer: "bright" },
-      
-      { text: "The king of the jungle in the cartoon was a lion.", answer: "lion" },
-      
-      { text: "The loose tooth in my mouth is very wiggly.", answer: "wiggly" },
-      
-      { text: "The student with the highest test score was surely she.", answer: "she" },
-      
-      { text: "The heavy rain on the tin roof was quite noisy.", answer: "noisy" },
-      
-      { text: "The chef in the busy restaurant is a real genius.", answer: "genius" },
-      
-      { text: "The silver moon above the dark trees was perfectly full.", answer: "full" },
-      
-      { text: "The person who finished the puzzle first was I.", answer: "I" },
-      
-      { text: "The colorful parrot in the wire cage was very chatty.", answer: "chatty" },
-      
-      { text: "The dark chocolate in the gold wrapper was quite bitter.", answer: "bitter" },
-      
-      { text: "The man in the blue uniform is a pilot.", answer: "pilot" },
-      
-      { text: "The empty box in the recycling bin was very light.", answer: "light" },
-      
-      { text: "The kids playing on the swings were actually we.", answer: "we" },
-      
-      { text: "The black cat on the wooden fence was very grumpy.", answer: "grumpy" },
-      
-      { text: "The leader of the scout troop is a brave soldier.", answer: "soldier" },
-      
-      { text: "The hot sand at the sunny beach was pure white.", answer: "white" },
-      
-      { text: "The owner of the red car is definitely she.", answer: "she" },
-      
-      { text: "The yellow butter on the toasted bread was very melty.", answer: "melty" },
-      
-      { text: "The girl in the yellow dress is a dancer.", answer: "dancer" },
-      
-      { text: "The fast computer on the computer desk was quite expensive.", answer: "expensive" },
-      
-      { text: "The ones who forgot their lunch were unfortunately they.", answer: "they" },
-      
-      { text: "The small bird in the nest was a tiny robin.", answer: "robin" },
-      
-      { text: "The juice in the plastic bottle was very sweet.", answer: "sweet" },
-      
-      { text: "The heavy gate at the castle entrance was solid iron.", answer: "iron" },
-      
-      { text: "The person who brought the cookies was he.", answer: "he" },
-      
-      { text: "The sharp pencils in the pencil box are bright yellow.", answer: "yellow" },
-      
-      { text: "The primary ingredient in the birthday cake is flour.", answer: "flour" },
-      
-      { text: "The pretty shells on the sand were very shiny.", answer: "shiny" },
-      
-      { text: "The big clock in the hallway was very slow.", answer: "slow" },
-      
-      { text: "The principal of our elementary school is a kind woman.", answer: "woman" },
-      
-      { text: "The warm soup in the ceramic bowl was very tasty.", answer: "tasty" },
-      
-      { text: "The only person left in the room was she.", answer: "she" },
-      
-      { text: "The green frog on the lily pad was very huge.", answer: "huge" },
-      
-      { text: "The blue whales in the deep ocean are enormous.", answer: "enormous" },
-      
-      { text: "The man who mows the lawn is usually he.", answer: "he" },
-      
-      { text: "The golden sun behind the gray clouds was very bright.", answer: "bright" },
-      
-      { text: "The most important rule in the class is kindness.", answer: "kindness" },
-      
-      { text: "The long train on the metal tracks was very fast.", answer: "fast" },
-      
-      { text: "The ones who won the gold medal were they.", answer: "they" },
-      
-      { text: "The fresh apples from the farm were very crisp.", answer: "crisp" },
-      
-      { text: "The lady in the red coat is my favorite aunt.", answer: "aunt" },
-      
-      { text: "The old map in the wooden chest was badly torn.", answer: "torn" },
-      
-      { text: "The person responsible for the mess was definitely I.", answer: "I" },
-      
-      { text: "The light snow on the cold ground was very pretty.", answer: "pretty" },
-      
-      { text: "The smartest animal on the farm is a pig.", answer: "pig" },
-      
-      { text: "The heavy sled on the steep hill was very fast.", answer: "fast" },
-      
-      { text: "The singer with the beautiful voice was definitely she.", answer: "she" },
-      
-      { text: "The loud drums in the music room were very annoying.", answer: "annoying" },
-      
-      { text: "The center of our solar system is the sun.", answer: "sun" },
-      
-      { text: "The purple grapes on the long vine were perfectly ripe.", answer: "ripe" },
-      
-      { text: "The person who answered the phone was he.", answer: "he" },
-      
-      { text: "The tiny seeds in the garden soil were very small.", answer: "small" },
-      
-      { text: "The best fruit for a summer picnic is watermelon.", answer: "watermelon" },
-      
-      { text: "The tall buildings in the big city were dark gray.", answer: "gray" },
-      
-      { text: "The person at the very front of the line was she.", answer: "she" },
-      
-      { text: "The white paper on the messy desk was completely blank.", answer: "blank" },
-      
-      { text: "The author of the adventure book is a tall man.", answer: "man" },
-      
-      { text: "The fuzzy blankets in the linen closet were very soft.", answer: "soft" },
-      
-      { text: "The travelers from the distant land were we.", answer: "we" },
-      
-      { text: "The cold milk in the glass carton was very fresh.", answer: "fresh" },
-      
-      { text: "The captain of the pirate ship was surely he.", answer: "he" },
-      
-      { text: "The red berries on the green bush were poisonous.", answer: "poisonous" },
-      
-      { text: "The main reason for the school party is a birthday.", answer: "birthday" },
-      
-      { text: "The busy bees in the flower garden were very active.", answer: "active" },
-      
-      { text: "The coach of the baseball team is definitely she.", answer: "she" },
-      
-      { text: "The large rocks in the shallow stream were very slippery.", answer: "slippery" },
-      
-      { text: "The smartest boy in the chess club is he.", answer: "he" },
-      
-      { text: "The blue ink in the fountain pen was very messy.", answer: "messy" },
-      
-      { text: "The owner of the local bakery is my uncle.", answer: "uncle" },
-      
-      { text: "The dark shadows on the bedroom wall were very scary.", answer: "scary" },
-      
-      { text: "The person who made the final goal was she.", answer: "she" },
-      
-      { text: "The gold coins in the black bag were very heavy.", answer: "heavy" },
-      
-      { text: "The capital city of our country is quite huge.", answer: "huge" },
-      
-      { text: "The yellow plane in the blue sky was very tiny.", answer: "tiny" },
-      
-      { text: "The winners of the talent show were definitely they.", answer: "they" },
-      
-      { text: "The white eggs in the straw nest were very fragile.", answer: "fragile" },
-      
-      { text: "The lady who bakes the best pies is she.", answer: "she" },
-      
-      { text: "The wooden chair in the dining room was very hard.", answer: "hard" },
-      
-      { text: "The main ingredient in this soup is a yellow onion.", answer: "onion" },
-      
-      { text: "The small kitten on the soft rug was very playful.", answer: "playful" },
-      
-      { text: "The person who broke the window was surely he.", answer: "he" },
-      
-      { text: "The cold ice in the cooler was completely frozen.", answer: "frozen" },
-      
-      { text: "The goal of our soccer team is victory.", answer: "victory" },
-      
-      { text: "The green leaves on the maple tree were very large.", answer: "large" },
-      
-      { text: "The driver of the long freight train is he.", answer: "he" },
-      
-      { text: "The orange juice in the glass pitcher was very cold.", answer: "cold" },
-      
-      { text: "The most famous player on the team is she.", answer: "she" },
-      
-      { text: "The little girl in the pink boots was very happy.", answer: "happy" },
-      
-      { text: "The person who wrote the funny poem was I.", answer: "I" },
-      
-      { text: "The large pizza with the extra cheese was very hot.", answer: "hot" },
-      
-      { text: "The best place for a quiet nap is my bed.", answer: "bed" },
-      
-      { text: "The thick book on the wooden table was very long.", answer: "long" },
-      
-      { text: "The leader of the group of students was she.", answer: "she" },
-      
-      { text: "The white snow on the mountain peak was very bright.", answer: "bright" },
-      
-      { text: "The smartest person in the entire world is he.", answer: "he" },
-      
-      { text: "The old man on the park bench was very kind.", answer: "kind" },
-      
-      { text: "The prize for the drawing contest is a gold trophy.", answer: "trophy" },
-      
-      { text: "The blue birds in the stone bath were very wet.", answer: "wet" },
-      
-      { text: "The one who finished the race first was she.", answer: "she" },
-      
-      { text: "The pink frosting on the chocolate cake was very sweet.", answer: "sweet" },
-      
-      { text: "The name of the new school puppy is Max.", answer: "Max" },
-      
-      { text: "The heavy box in the dark attic was very dusty.", answer: "dusty" },
-      
-      { text: "The ones who stayed after school were we.", answer: "we" },
-      
-      { text: "The small boat on the lake was bright blue.", answer: "blue" },
-      
-      { text: "The star of the new movie is she.", answer: "she" },
-      
-      { text: "The yellow flowers in the glass vase were very pretty.", answer: "pretty" },
-      
-      { text: "The boy who found the lost keys was he.", answer: "he" },
-      
-      { text: "The fast horse in the green pasture was dark brown.", answer: "brown" },
-      
-      { text: "The winner of the gold medal was surely she.", answer: "she" },
-      
-      { text: "The fresh bread in the warm oven was light brown.", answer: "brown" },
-      
-      { text: "The best singer in the choir is he.", answer: "he" },
-      
-      { text: "The black dog in the backyard was very loud.", answer: "loud" },
-      
-      { text: "The teacher for our math class is she.", answer: "she" },
-      
-      { text: "The clear sky over the tall mountains was light blue.", answer: "blue" },
-      
-      { text: "The driver of the police car is he.", answer: "he" },
-      
-      { text: "The round ball on the playground was bright red.", answer: "red" },
-      
-      { text: "The person in the middle of the photo is I.", answer: "I" },
-      
-      { text: "The green grass in the front yard was very wet.", answer: "wet" },
-      
-      { text: "The best month for a long vacation is July.", answer: "July" },
-      
-      { text: "The hot tea in the blue cup was very bitter.", answer: "bitter" },
-      
-      { text: "The person who fixed the computer was she.", answer: "she" },
-      
-      { text: "The new shoes in the cardboard box were pure white.", answer: "white" },
-      
-      { text: "The smartest girl in the class is she.", answer: "she" },
-      
-      { text: "The small cat on the windowsill was light gray.", answer: "gray" },
-      
-      { text: "The owner of the orange cat is he.", answer: "he" },
-      
-      { text: "The yellow sun in the sky was extremely bright.", answer: "bright" },
-      
-      { text: "The name of the town is Springville.", answer: "Springville" },
-      
-      { text: "The old house on the corner was completely empty.", answer: "empty" },
-      
-      { text: "The woman who gave the speech was she.", answer: "she" },
-      
-      { text: "The red apple on the teacher's desk was very shiny.", answer: "shiny" },
-      
-      { text: "The captain of the giant ship is he.", answer: "he" },
-      
-      { text: "The green trees in the park were very tall.", answer: "tall" },
-      
-      { text: "The girl who won the contest was definitely she.", answer: "she" },
-      
-      { text: "The bright lamp in the living room was brand new.", answer: "new" },
-      
-      { text: "The author of the children's book is she.", answer: "she" },
-      
-      { text: "The white clouds in the sky were very fluffy.", answer: "fluffy" },
-      
-      { text: "The ones who finished their work were they.", answer: "they" },
-      
-      { text: "The spicy food at the restaurant was very hot.", answer: "hot" },
-      
-      { text: "The winner of the spelling bee was he.", answer: "he" },
-      
-      { text: "The soft pillow on my bed was light blue.", answer: "blue" },
-      
-      { text: "The person who made the cake was she.", answer: "she" },
-      
-      { text: "The big truck on the highway was very loud.", answer: "loud" },
-      
+      { text: "The ancient castle remained a silent witness to the passing of time.", answer: "witness" },
+      { text: "The heavy morning fog became a thick blanket over the sleeping city.", answer: "blanket" },
+      { text: "The new principal seems like a very kind leader for our school.", answer: "leader" },
+      { text: "The deep, dark cavern felt like a cold tomb to the explorers.", answer: "tomb" },
+      { text: "My older brother became a talented drummer in the local jazz band.", answer: "drummer" },
+      { text: "The bright orange sunset was a beautiful end to a very long day.", answer: "end" },
+      { text: "The messy construction site appeared a chaotic disaster to the neighbors.", answer: "disaster" },
+      { text: "The small backyard garden is a peaceful sanctuary for many local birds.", answer: "sanctuary" },
+      { text: "That dusty old book turned out to be a rare treasure for the library.", answer: "treasure" },
+      { text: "The tall, rusty windmill was a lonely sentinel on the prairie.", answer: "sentinel" },
+      { text: "The chemistry experiment became a bubbling mess on the lab table.", answer: "mess" },
+      { text: "The young athlete remained a humble student of the game.", answer: "student" },
+      { text: "The warm campfire was a welcome sight after the snowy hike.", answer: "sight" },
+      { text: "The quiet librarian had been a famous singer in her youth.", answer: "singer" },
+      { text: "The empty warehouse felt like a spooky playground for the kids.", answer: "playground" },
+      { text: "The silver trophy was a shiny symbol of their hard work.", answer: "symbol" },
+      { text: "The old oak tree is a sturdy anchor for the backyard swing.", answer: "anchor" },
+      { text: "The local bakery became a popular spot for the morning crowd.", answer: "spot" },
+      { text: "The thick forest was a dark maze of tangled vines.", answer: "maze" },
+      { text: "The rainy Monday was a gloomy start to the school week.", answer: "start" },
+      { text: "The new computer felt like a magical tool for my art projects.", answer: "tool" },
+      { text: "The worn-out sneakers were a sad reminder of the long race.", answer: "reminder" },
+      { text: "The clear lake became a giant mirror for the mountain peaks.", answer: "mirror" },
+      { text: "The brave scout was a helpful guide through the thick woods.", answer: "guide" },
+      { text: "The fluffy kitten became a playful nuisance during the quiet dinner.", answer: "nuisance" },
+      { text: "The desert heat felt like a heavy weight on the travelers.", answer: "weight" },
+      { text: "The small island remains a hidden gem in the middle of the ocean.", answer: "gem" },
+      { text: "The math problem appeared a difficult challenge to the whole class.", answer: "challenge" },
+      { text: "The old radio was a constant source of news during the storm.", answer: "source" },
+      { text: "The snowy mountain was a dangerous obstacle for the early pioneers.", answer: "obstacle" },
+      { text: "The library is a quiet haven for people who love to read.", answer: "haven" },
+      { text: "The bright lighthouse was a steady beacon for the lost ships.", answer: "beacon" },
+      { text: "The blooming garden became a colorful sea of bright red petals.", answer: "sea" },
+      { text: "The gold watch was a precious gift from my grandfather.", answer: "gift" },
+      { text: "The dusty attic felt like a forgotten world to the curious girl.", answer: "world" },
+      { text: "The basketball coach had been a star player in high school.", answer: "player" },
+      { text: "The frozen pond was a perfect stage for the ice skaters.", answer: "stage" },
+      { text: "The empty birdhouse became a cozy home for a family of squirrels.", answer: "home" },
+      { text: "The long bridge is a vital link between the two busy cities.", answer: "link" },
+      { text: "The sudden thunder was a loud warning of the coming storm.", answer: "warning" },
+      { text: "The school play was a huge success for the drama club.", answer: "success" },
+      { text: "The ancient ruins were a mysterious puzzle for the archaeologists.", answer: "puzzle" },
+      { text: "The soft pillow was a fluffy cloud beneath my tired head.", answer: "cloud" },
+      { text: "The city park is a green oasis in a world of gray concrete.", answer: "oasis" },
+      { text: "The science teacher became a great mentor to the young inventors.", answer: "mentor" },
+      { text: "The giant ship was a floating hotel for the vacationing families.", answer: "hotel" },
+      { text: "The warm soup was a delicious comfort on a freezing night.", answer: "comfort" },
+      { text: "The blue ribbon was a proud mark of the best project.", answer: "mark" },
+      { text: "The winding river became a silver ribbon across the green valley.", answer: "ribbon" },
+      { text: "The old farmhouse remained a sturdy shelter against the strong winds.", answer: "shelter" },
+      { text: "The math test felt like an impossible mountain to the nervous boy.", answer: "mountain" },
+      { text: "The birthday party was a joyful celebration for the ten-year-old.", answer: "celebration" },
+      { text: "The bright moon was a glowing lantern in the midnight sky.", answer: "lantern" },
+      { text: "The busy bees are the primary workers in the hive.", answer: "workers" },
+      { text: "The local museum is a wonderful resource for history students.", answer: "resource" },
+      { text: "The stray dog became a loyal companion to the lonely man.", answer: "companion" },
+      { text: "The dark tunnel was a scary path to the other side.", answer: "path" },
+      { text: "The yellow bus is a noisy vehicle for the morning commute.", answer: "vehicle" },
+      { text: "The tall skyscraper was a massive giant among the smaller buildings.", answer: "giant" },
+      { text: "The soft music was a soothing background for the quiet dinner.", answer: "background" },
+      { text: "The old map turned out to be an accurate guide to the cave.", answer: "guide" },
+      { text: "The heavy rain was a welcome relief for the thirsty crops.", answer: "relief" },
+      { text: "The bright classroom is an inviting space for new students.", answer: "space" },
+      { text: "The golden ring was a family heirloom for many generations.", answer: "heirloom" },
+      { text: "The chocolate cake became a messy treat for the toddlers.", answer: "treat" },
+      { text: "The wide ocean felt like an endless blue field to the sailors.", answer: "field" },
+      { text: "The funny clown was a popular attraction at the town circus.", answer: "attraction" },
+      { text: "The small seed will become a giant tree in fifty years.", answer: "tree" },
+      { text: "The silver coins were a hidden bounty inside the wooden box.", answer: "bounty" },
+      { text: "The empty park seemed a lonely place after the sun went down.", answer: "place" },
+      { text: "The mountain trail was a rocky climb for the inexperienced hikers.", answer: "climb" },
+      { text: "The white board is a useful tool for the busy teacher.", answer: "tool" },
+      { text: "The spicy chili was a hot surprise for the hungry guests.", answer: "surprise" },
+      { text: "The old violin was a beautiful instrument in the right hands.", answer: "instrument" },
+      { text: "The small creek became a rushing torrent after the heavy rain.", answer: "torrent" },
+      { text: "The marble statue was a lifelike image of the famous king.", answer: "image" },
+      { text: "The local library is a valuable asset to the neighborhood.", answer: "asset" },
+      { text: "The dark forest seemed a forbidden territory to the young children.", answer: "territory" },
+      { text: "The new puppy became a constant distraction during my homework.", answer: "distraction" },
+      { text: "The warm sun was a friendly face on a cold winter day.", answer: "face" },
+      { text: "The brick wall is a solid barrier against the noisy street.", answer: "barrier" },
+      { text: "The old clock was a steady heartbeat in the quiet house.", answer: "heartbeat" },
+      { text: "The final lap was a desperate sprint for the tired runners.", answer: "sprint" },
+      { text: "The new bridge will be a major improvement for the city traffic.", answer: "improvement" },
+      { text: "The empty stadium felt like a hollow shell after the game.", answer: "shell" },
+      { text: "The green meadow was a soft carpet for the grazing sheep.", answer: "carpet" },
+      { text: "The sudden noise was a startling interruption to the deep silence.", answer: "interruption" },
+      { text: "The telescope is a powerful window to the distant stars.", answer: "window" },
+      { text: "The young boy became a skilled archer after years of practice.", answer: "archer" },
+      { text: "The dusty road was a long journey for the tired travelers.", answer: "journey" },
+      { text: "The velvet dress was a soft luxury for the elegant lady.", answer: "luxury" },
+      { text: "The bright fire was a cozy heart for the winter cabin.", answer: "heart" },
+      { text: "The small town is a quiet retreat from the busy city life.", answer: "retreat" },
+      { text: "The heavy anchor was a reliable guard for the large ship.", answer: "guard" },
+      { text: "The old diary was a secret window into the past.", answer: "window" },
+      { text: "The summer camp was a fun adventure for the noisy kids.", answer: "adventure" },
+      { text: "The thick book became a loyal friend during the long flight.", answer: "friend" },
+      { text: "The metal fence is a sturdy boundary for the farm animals.", answer: "boundary" },
+      { text: "The morning dew was a sparkling jewelry on the green grass.", answer: "jewelry" },
+      { text: "The giant wave was a terrifying wall of water to the surfers.", answer: "wall" },
+      { text: "The new project became a major priority for the busy team.", answer: "priority" },
+      { text: "The old man was a wise counselor to the troubled youth.", answer: "counselor" },
+      { text: "The white snow was a clean canvas for the winter artist.", answer: "canvas" },
+      { text: "The dark cave was a natural refrigerator for the hikers' food.", answer: "refrigerator" },
+      { text: "The golden eagle is a fierce predator in the open sky.", answer: "predator" },
+      { text: "The messy room was a clear sign of a busy weekend.", answer: "sign" },
+      { text: "The red wagon was a trusty vehicle for the heavy rocks.", answer: "vehicle" },
+      { text: "The small cabin became a warm sanctuary from the biting wind.", answer: "sanctuary" },
+      { text: "The ancient bridge is a historic landmark for the local town.", answer: "landmark" },
+      { text: "The blue ocean was a vast mystery to the young boy.", answer: "mystery" },
+      { text: "The new shoes were a painful mistake on the long hike.", answer: "mistake" },
+      { text: "The tall mountains are a majestic backdrop for the quiet village.", answer: "backdrop" },
+      { text: "The local park is a favorite destination for the Sunday crowd.", answer: "destination" },
+      { text: "The old newspaper became a useful wrapper for the fragile glass.", answer: "wrapper" },
+      { text: "The small bird was a cheerful singer on the morning branch.", answer: "singer" },
+      { text: "The heavy fog was a gray veil over the morning harbour.", answer: "veil" },
+      { text: "The bright sun is a powerful engine for the earth's weather.", answer: "engine" },
+      { text: "The new invention will be a helpful solution for many people.", answer: "solution" },
+      { text: "The silent house felt like an empty box without the family.", answer: "box" },
+      { text: "The green hills are a beautiful sight in the early spring.", answer: "sight" },
+      { text: "The old horse became a gentle teacher for the young rider.", answer: "teacher" },
+      { text: "The iron gate was a formidable entrance to the grand estate.", answer: "entrance" },
+      { text: "The sudden rain was a refreshing shower for the dusty garden.", answer: "shower" },
+      { text: "The math grade was a proud achievement for the hard-working girl.", answer: "achievement" },
+      { text: "The white cat was a ghostly figure in the moonlight.", answer: "figure" },
+      { text: "The school bus is a reliable carrier for the local children.", answer: "carrier" },
+      { text: "The large tree became a natural umbrella during the sunshower.", answer: "umbrella" },
+      { text: "The antique lamp was a delicate piece in the museum's collection.", answer: "piece" },
+      { text: "The quiet night was a peaceful end to the chaotic day.", answer: "end" },
+      { text: "The tall crane is a metal giant on the construction site.", answer: "giant" },
+      { text: "The cold snow felt like a frozen bite on my bare hands.", answer: "bite" },
+      { text: "The local choir is a talented group of local singers.", answer: "group" },
+      { text: "The small compass was a vital tool for the lost hiker.", answer: "tool" },
+      { text: "The red fox was a sly visitor to the farm's chicken coop.", answer: "visitor" },
+      { text: "The empty bottle became a glass message for the ocean waves.", answer: "message" },
+      { text: "The bright star was a lonely traveler in the night sky.", answer: "traveler" },
+      { text: "The old barn is a historic relic of the town's farming past.", answer: "relic" },
+      { text: "The new car was a shiny reward for his many years of work.", answer: "reward" },
+      { text: "The dark clouds were a grim omen for the outdoor wedding.", answer: "omen" },
+      { text: "The garden hose became a long snake in the tall grass.", answer: "snake" },
+      { text: "The small gift was a thoughtful gesture from the new neighbor.", answer: "gesture" },
+      { text: "The heavy desk was a solid workspace for the busy writer.", answer: "workspace" },
+      { text: "The clear stream is a cool drink for the thirsty deer.", answer: "drink" },
+      { text: "The large map was a colorful guide to the distant countries.", answer: "guide" },
+      { text: "The old trunk became a secret treasure for the two children.", answer: "treasure" },
+      { text: "The bright paint was a cheerful change for the dark room.", answer: "change" },
+      { text: "The loud whistle was a sharp signal for the game to start.", answer: "signal" },
+      { text: "The small cat was a soft shadow in the corner of the room.", answer: "shadow" },
+      { text: "The new bridge is a modern marvel of engineering.", answer: "marvel" },
+      { text: "The thick mud was a sticky trap for the heavy boots.", answer: "trap" },
+      { text: "The local market is a busy center for the town's people.", answer: "center" },
+      { text: "The old sailor was a great storyteller of the high seas.", answer: "storyteller" },
+      { text: "The white fence is a neat frame for the beautiful garden.", answer: "frame" },
+      { text: "The sudden wind was a cold blast from the northern mountains.", answer: "blast" },
+      { text: "The small kite became a flying bird in the breezy sky.", answer: "bird" },
+      { text: "The heavy hammer was a powerful tool in the blacksmith's hand.", answer: "tool" },
+      { text: "The dark night was a thick curtain over the small village.", answer: "curtain" },
+      { text: "The new project is a massive undertaking for the small company.", answer: "undertaking" },
+      { text: "The small pond became a lively nursery for the young frogs.", answer: "nursery" },
+      { text: "The old man remained a sharp thinker despite his age.", answer: "thinker" },
+      { text: "The bright moon was a cold pearl in the dark sky.", answer: "pearl" },
+      { text: "The local newspaper is a primary source of town news.", answer: "source" },
+      { text: "The heavy snow was a deep blanket over the quiet farm.", answer: "blanket" },
+      { text: "The new student became a fast friend to everyone in the class.", answer: "friend" },
+      { text: "The large dog was a gentle giant around the small children.", answer: "giant" },
+      { text: "The thin ice was a dangerous floor for the heavy skaters.", answer: "floor" },
+      { text: "The old book was a dusty archive of forgotten stories.", answer: "archive" },
+      { text: "The bright light was a welcome guide in the dark hallway.", answer: "guide" },
+      { text: "The small town is a peaceful refuge from the city's noise.", answer: "refuge" },
+      { text: "The heavy stone was a solid base for the new statue.", answer: "base" },
+      { text: "The dark forest became a spooky setting for the campfire story.", answer: "setting" },
+      { text: "The new teacher is a great addition to our school staff.", answer: "addition" },
+      { text: "The small girl became a brave explorer in her own backyard.", answer: "explorer" },
+      { text: "The iron bridge is a strong connection between the two banks.", answer: "connection" },
+      { text: "The sudden storm was a wild disruption to the quiet afternoon.", answer: "disruption" },
+      { text: "The small lamp was a warm glow in the dark corner.", answer: "glow" },
+      { text: "The old house became a historic museum for the local people.", answer: "museum" },
+      { text: "The blue sky was a clear canopy over the summer picnic.", answer: "canopy" },
+      { text: "The heavy rain was a noisy drum on the metal roof.", answer: "drum" },
+      { text: "The new bridge will be a vital artery for the city's traffic.", answer: "artery" },
+      { text: "The small seed is a tiny package of future life.", answer: "package" },
+      { text: "The old man was a living legend in the small town.", answer: "legend" },
+      { text: "The bright fire was a dancing spirit in the dark fireplace.", answer: "spirit" },
+      { text: "The local library is a quiet temple for book lovers.", answer: "temple" },
+      { text: "The heavy fog was a white wall for the cautious drivers.", answer: "wall" },
+      { text: "The new project became a major focus for the whole class.", answer: "focus" },
+      { text: "The small cat was a silent hunter in the tall grass.", answer: "hunter" },
+      { text: "The old bridge is a shaky path over the deep river.", answer: "path" },
+      { text: "The sudden noise was a sharp jolt to my quiet thoughts.", answer: "jolt" },
+      { text: "The new student became a key member of the debate team.", answer: "member" },
+      { text: "The small pond was a quiet mirror for the morning sky.", answer: "mirror" },
+      { text: "The heavy stone was a sturdy weight for the garden gate.", answer: "weight" },
+      { text: "The old tree is a historic landmark in the center of town.", answer: "landmark" },
+      { text: "The bright sun was a warm hug after the cold night.", answer: "hug" },
+      { text: "The small town is a tight community of friendly neighbors.", answer: "community" },
+      { text: "The heavy snow was a silent thief of the morning traffic.", answer: "thief" },
+      { text: "The new project will be a huge benefit to the local school.", answer: "benefit" },
+      { text: "The small seed became a bright flower in the sunny window.", answer: "flower" },
+      { text: "The old book remains a classic example of adventure stories.", answer: "example" },
+      { text: "The bright moon was a silver coin in the velvet sky.", answer: "coin" },
+      { text: "The local park is a favorite spot for the morning joggers.", answer: "spot" },
+      { text: "The heavy fog was a gray ghost in the valley.", answer: "ghost" },
+      { text: "The new teacher became a helpful guide for the young students.", answer: "guide" },
       { text: "The name of the baby is Leo.", answer: "Leo" }
     ];
 
